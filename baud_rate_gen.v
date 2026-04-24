@@ -1,4 +1,4 @@
-## Baud Rate Generator-->
+//Baud Rate Generator-->
 
 module baud_rate_generator(input logic clk,
                            output logic rx_enable,
