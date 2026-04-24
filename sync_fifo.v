@@ -1,4 +1,4 @@
-## Synchronous First-In-First-Out-->
+// Synchronous First-In-First-Out-->
 module fifo(input logic clk,
             input logic rst,
             input logic wr_en,
