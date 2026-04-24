@@ -1,0 +1,24 @@
+# Makefile
+SIM           = icarus
+TOPLEVEL_LANG = verilog
+
+VERILOG_SOURCES  = $(PWD)/rtl/baud_rate_gen.v
+VERILOG_SOURCES += $(PWD)/rtl/transmitter.v
+VERILOG_SOURCES += $(PWD)/rtl/receiver.v
+VERILOG_SOURCES += $(PWD)/rtl/sync_fifo.v
+VERILOG_SOURCES += $(PWD)/rtl/uart_top.v
+
+TOPLEVEL = uart_top
+MODULE   = tests.test_uart
+
+# Baud parameters
+COMPILE_ARGS += -P uart_top.baud_rate=115200
+COMPILE_ARGS += -P uart_top.freq=50000000
+
+# So 'from uart_gen import ...' works inside tests/
+export PYTHONPATH := $(PWD)/tests:$(PYTHONPATH)
+
+# VCD waveform for GTKWave
+SIM_ARGS += -vcd dump.vcd
+
+include $(shell cocotb-config --makefiles)/Makefile.sim
