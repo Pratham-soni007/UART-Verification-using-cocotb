@@ -1,4 +1,4 @@
-##Receiver Module
+//Receiver Module
 module receiver(input logic clk,
                 input logic rst,
                 input logic rdy_clr,//testbench
